@@ -42,7 +42,7 @@ RUN set -ex \
     && chmod +x /sbin/tini
 
 
-# Add Atlassian Jira Servicedesk Server user and group to ensure that the IDs (UID and GID)
+# Add Atlassian Jira Service Desk Server user and group to ensure that the IDs (UID and GID)
 # are consistently assigned regardless of which additional dependencies are added.
 
 ENV RUN_USER_ID=901 RUN_USER=jira
@@ -51,13 +51,10 @@ ENV RUN_GROUP_ID=901 RUN_GROUP=jira
 RUN groupadd -r -g ${RUN_GROUP_ID} ${RUN_GROUP} && useradd -r -g ${RUN_GROUP} -u ${RUN_USER_ID} ${RUN_USER}
 
 
-# Install Atlassian Jira Servicedesk Server inclusive MySQL Connector
+# Install Atlassian Jira Service Desk Server inclusive MySQL Connector
 
 ARG JIRA_VERSION=3.13.0
 ARG JIRA_DOWNLOAD_URL=https://www.atlassian.com/software/jira/downloads/binary/atlassian-servicedesk-${JIRA_VERSION}.tar.gz
-
-ARG MYSQL_CONNECTOR_VERSION=5.1.46
-ARG MYSQL_CONNECTOR_DOWNLOAD_URL=https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.tar.gz
 
 ENV JIRA_INSTALL_DIR=/opt/atlassian/jira
 ENV JIRA_HOME=/var/atlassian/jira
@@ -65,17 +62,13 @@ ENV JIRA_HOME=/var/atlassian/jira
 # Actions to perform:
 #   - Create installation directory
 #   - Create home directory
-#   - Download and unpack Atlassian Jira Servicedesk Server
-#   - Create lib directory inside the installation directory
-#   - Download and unpack MySQL Connector
-#   - Set permissions for the Jira Servicedesk installation directory
-#   - Set permissions for the Jira Servicedesk home directory
+#   - Download and unpack Atlassian Jira Service Desk Server
+#   - Set permissions for the Jira Service Desk installation directory
+#   - Set permissions for the Jira Service Desk home directory
 RUN set -ex \
     && mkdir -p ${JIRA_INSTALL_DIR} \
     && mkdir -p ${JIRA_HOME} \
     && curl -fSL ${JIRA_DOWNLOAD_URL} | tar -xz --no-same-owner --strip-components=1 -C ${JIRA_INSTALL_DIR} \
-    && mkdir -p ${JIRA_INSTALL_DIR}/lib \
-    && curl -fSL ${MYSQL_CONNECTOR_DOWNLOAD_URL} | tar -xz --no-same-owner --strip-components=1 -C ${JIRA_INSTALL_DIR}/lib "mysql-connector-java-${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar" \
     && sed -i -e 's/JVM_MINIMUM_MEMORY="\([0-9]\+[kmg]\)"/: ${JVM_MINIMUM_MEMORY:=\1}/g' ${JIRA_INSTALL_DIR}/bin/setenv.sh \
     && sed -i -e 's/JVM_MAXIMUM_MEMORY="\([0-9]\+[kmg]\)"/: ${JVM_MAXIMUM_MEMORY:=\1}/g' ${JIRA_INSTALL_DIR}/bin/setenv.sh \
     && sed -i -e 's/port="8080"/port="8080" secure="${catalinaConnectorSecure}" scheme="${catalinaConnectorScheme}" proxyName="${catalinaConnectorProxyName}" proxyPort="${catalinaConnectorProxyPort}"/' ${JIRA_INSTALL_DIR}/conf/server.xml \
@@ -83,7 +76,7 @@ RUN set -ex \
     && chown -R ${RUN_USER}:${RUN_GROUP} ${JIRA_HOME}
 
 
-# Configure Atlassian Jira Servicedesk Server
+# Configure Atlassian Jira Service Desk Server
 
 VOLUME ${JIRA_HOME}
 

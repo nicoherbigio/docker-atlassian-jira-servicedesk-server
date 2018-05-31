@@ -1,1 +1,1 @@
-# Atlassian Jira Servicedesk Server
+# Atlassian Jira Service Desk Server
