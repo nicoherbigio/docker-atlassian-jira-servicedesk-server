@@ -53,7 +53,7 @@ RUN groupadd -r -g ${RUN_GROUP_ID} ${RUN_GROUP} && useradd -r -g ${RUN_GROUP} -u
 
 # Install Atlassian Jira Service Desk Server inclusive MySQL Connector
 
-ARG JIRA_VERSION=3.14.1
+ARG JIRA_VERSION=3.14.2
 ARG JIRA_DOWNLOAD_URL=https://www.atlassian.com/software/jira/downloads/binary/atlassian-servicedesk-${JIRA_VERSION}.tar.gz
 
 ENV JIRA_INSTALL_DIR=/opt/atlassian/jira
