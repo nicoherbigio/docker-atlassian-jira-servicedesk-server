@@ -11,7 +11,9 @@ env:
   DOCKER_IMAGE_CONTEXT_PATH: 4.3/debian/default/
   DOCKERHUB_IMAGE_TAGS: |
     nicoherbigde/atlassian-jira-servicedesk-server:4.3
+    nicoherbigio/atlassian-jira-servicedesk-server:4.3
     nicoherbigde/atlassian-jira-servicedesk-server:4.3.5
+    nicoherbigio/atlassian-jira-servicedesk-server:4.3.5
 
 jobs:
   build-and-push:
