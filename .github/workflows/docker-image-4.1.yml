@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/docker-image-4.1.yml'
+      - '4.1/**'
   schedule:
     - cron: '0 3 * * 1'
 
