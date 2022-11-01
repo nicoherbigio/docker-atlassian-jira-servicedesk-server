@@ -1,4 +1,4 @@
-FROM atlassian/jira-servicedesk:4.20.13
+FROM atlassian/jira-servicedesk:4.20.14
 
 LABEL maintainer="Nico Herbig <nico@nicoherbig.io>"
 
