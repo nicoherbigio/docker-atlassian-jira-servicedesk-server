@@ -26,8 +26,8 @@ jobs:
             docker-tags: |
               nicoherbigde/atlassian-jira-servicedesk-server:4.13
               nicoherbigio/atlassian-jira-servicedesk-server:4.13
-              nicoherbigde/atlassian-jira-servicedesk-server:4.13.26
-              nicoherbigio/atlassian-jira-servicedesk-server:4.13.26
+              nicoherbigde/atlassian-jira-servicedesk-server:4.13.27
+              nicoherbigio/atlassian-jira-servicedesk-server:4.13.27
           - version: 4.20
             docker-context: 4.20/ubuntu/default
             docker-tags: |
