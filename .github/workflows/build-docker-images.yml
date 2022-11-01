@@ -31,10 +31,10 @@ jobs:
           - version: 4.20
             docker-context: 4.20/ubuntu/default
             docker-tags: |
-              nicoherbigde/atlassian-jira-servicedesk-server:4.13
-              nicoherbigio/atlassian-jira-servicedesk-server:4.13
-              nicoherbigde/atlassian-jira-servicedesk-server:4.13.11
-              nicoherbigio/atlassian-jira-servicedesk-server:4.13.11
+              nicoherbigde/atlassian-jira-servicedesk-server:4.20
+              nicoherbigio/atlassian-jira-servicedesk-server:4.20
+              nicoherbigde/atlassian-jira-servicedesk-server:4.20.12
+              nicoherbigio/atlassian-jira-servicedesk-server:4.20.12
 
     steps:
       - name: Checkout Git Repository
